@@ -13,7 +13,7 @@ app.secret_key = "nndwqwqjwqwqqjjej317317091uodqndnq"
 
 
 @app.route('/')
-def laxmiledger():
+def this_is_done():
     data = get_db()
     # return '<h1><b>Hello from Laxmi!!!!!</b></h1>'
     return str(data)
@@ -21,7 +21,7 @@ def laxmiledger():
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
-        db = g._database = sqlite3.connect("../db/this_is_done.db")
+        db = g._database = sqlite3.connect("./db/this_is_done.db")
         cursor = db.cursor()
         cursor.execute("select * from ToDO_List")
 
