@@ -16,18 +16,19 @@ app.secret_key = "nndwqwqjwqwqqjjej317317091uodqndnq"
 def this_is_done():
     data = get_db()
     # return '<h1><b>Hello from Laxmi!!!!!</b></h1>'
-    return str(data)
+    return data[0]
 
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
         db = g._database = sqlite3.connect("./db/this_is_done.db")
         cursor = db.cursor() 
-        all_data = cursor.execute("SELECT '_rowid_',* FROM 'main'.'ToDO_List')
+        all_data = cursor.execute("SELECT _rowid_,* FROM ToDO_List")
         data_rows = [str(rows[0]) for row in all_data]
 
     # return db
-    return cursor.fetchall()
+    # return cursor.fetchall()
+    return data_rows
 
 @app.teardown_appcontext
 def close_connection(exception):
