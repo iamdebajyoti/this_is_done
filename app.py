@@ -22,8 +22,9 @@ def get_db():
     db = getattr(g, '_database', None)
     if db is None:
         db = g._database = sqlite3.connect("./db/this_is_done.db")
-        cursor = db.cursor()
-        cursor.execute("select * from ToDO_List")
+        cursor = db.cursor() 
+        all_data = cursor.execute("SELECT '_rowid_',* FROM 'main'.'ToDO_List')
+        
 
     # return db
     return cursor.fetchall()
