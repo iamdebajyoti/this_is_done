@@ -24,7 +24,7 @@ def get_db():
         db = g._database = sqlite3.connect("./db/this_is_done.db")
         cursor = db.cursor() 
         all_data = cursor.execute("SELECT '_rowid_',* FROM 'main'.'ToDO_List')
-        
+        data_rows = [str(rows[0]) for row in all_data]
 
     # return db
     return cursor.fetchall()
